@@ -9,9 +9,8 @@ POST http://localhost:3000/api/contacts
 Content-Type: application/json
 
 {
-  "name": "Jack Vorobey",
-  "email": "jack.vorobey@qw.com",
-  "phone": "(999) 123-4567"
+  "name": "Jane Vorobey",
+  "phone": "(999) 321-7654"
 }
 
 ### router.delete('/:contactId', ctrl.removeContactById);
@@ -23,7 +22,7 @@ Content-Type: application/json
 
 {
   "id": "e6ywwRe4jcqxXfCZOj_1e",
-  "name": "Thomas Lucas",
-  "email": "tomas.lucas@Nulla.com",
+
+  "email": "lucas@Nulla.com",
   "phone": "(704) 398-7993"
 }

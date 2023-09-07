@@ -49,8 +49,7 @@
   },
   {
     "id": "e6ywwRe4jcqxXfCZOj_1e",
-    "name": "Thomas Lucas",
-    "email": "tomas.lucas@Nulla.com",
+    "email": "lucas@Nulla.com",
     "phone": "(704) 398-7993"
   },
   {
@@ -58,5 +57,11 @@
     "name": "Jack Vorobey",
     "email": "jack.vorobey@qw.com",
     "phone": "(999) 123-4567"
+  },
+  {
+    "id": "mgmDdAZBsZRvBoGZYQ9WQ",
+    "name": "Jane Vorobey",
+    "email": "jane.vorobey@qw.com",
+    "phone": "(999) 321-7654"
   }
 ]

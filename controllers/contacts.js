@@ -29,13 +29,16 @@ const removeContactById = async (req, res) => {
 };
 
 const createContact = async (req, res) => {
-    const result = await contacts.addContact(req.body);
+    const { name, email, phone } = req.body
+
+    const result = await contacts.addContact({ name, email, phone });
     res.status(201).json(result);
 };
 
-const updateContactById = async (req, res) => {
+const updateContactById = async (req, res, next) => {
     const { contactId } = req.params;
-    const result = await contacts.updateContact(contactId, req.body);
+    const { name, email, phone } = req.body
+    const result = await contacts.updateContact(contactId,{ name, email, phone });
     if (!result) {
         throw HttpError(404, 'Not found');
     }
