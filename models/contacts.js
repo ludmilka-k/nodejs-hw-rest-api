@@ -35,14 +35,13 @@ const addContact = async (body) => {
   return newContact || null;
 }
 
-const updateContact = async (id, body) => {
-  const { name, email, phone } = body
+const updateContact = async (id, toUpdate) => {
   const allContacts = await listContacts();
   const index = allContacts.findIndex(item => item.id === id);
   if (index === -1) {
     return null;
   }
-  const updatedContact = {id, name, email, phone};
+  const updatedContact = Object.assign(allContacts[index], toUpdate);
   allContacts.splice(index, 1, updatedContact);
   await fs.writeFile(contactsPath, JSON.stringify(allContacts, null, 2));
   return updatedContact;
