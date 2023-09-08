@@ -1,0 +1,28 @@
+### router.get('/', ctrl.getAllContacts);
+GET http://localhost:3000/api/contacts
+
+### router.get('/:contactId', ctrl.getContactById);
+GET http://localhost:3000/api/contacts/AeHIrLTr6JkxGE6SN-0Rw
+
+### router.post('/', validatedContacts(schemaValidation), ctrl.createContact);
+POST http://localhost:3000/api/contacts
+Content-Type: application/json
+
+{
+  "name": "Jane Vorobey",
+  "phone": "(999) 321-7654"
+}
+
+### router.delete('/:contactId', ctrl.removeContactById);
+DELETE http://localhost:3000/api/contacts/rsKkOQUi80UsgVPCcLZZW
+
+### router.put('/:contactId', ctrl.updateContactById);
+PUT http://localhost:3000/api/contacts/e6ywwRe4jcqxXfCZOj_1e
+Content-Type: application/json
+
+{
+  "id": "e6ywwRe4jcqxXfCZOj_1e",
+
+  "email": "lucas@Nulla.com",
+  "phone": "(704) 398-7993"
+}
