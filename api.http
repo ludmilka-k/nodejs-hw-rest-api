@@ -60,23 +60,25 @@ Content-Type: application/json
 }
 
 > {%
-
+    client.global.set("token", response.body.token);
+    client.log("received token: " + client.global.get("token"))
  %}
 
 
 ### Current User
 ### authRouter.get('/:curent', authCtrl.getCurrent);
 GET http://localhost:3000/api/auth/current
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDk1NzI1MDlhOTQ3OTU0ZDk0NDIwNCIsImlhdCI6MTY5NTExMTcyMSwiZXhwIjoxNjk1MTk0NTIxfQ.zaSD7SM8p3YehB0ac1GCPWMAnqNu5Vz-K9qQy7ogv6k
+Authorization:Bearer {{token}}
 
 ### Logout User
 ### authRouter.post('/:logout', authCtrl.logout);
 POST http://localhost:3000/api/auth/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDk1NzI1MDlhOTQ3OTU0ZDk0NDIwNCIsImlhdCI6MTY5NTExMTEwMywiZXhwIjoxNjk1MTkzOTAzfQ.xCFNIk5k_IlcZz40V6cHdthriOr3kk2KAC9Kc8rfQvY
+Authorization: Bearer {{token}}
 
+### Change Subscription
 ### authRouter.patch('/:current/subscription', authCtrl.patchSubscription);
 PATCH http://localhost:3000/api/auth/current/subscription
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDk1NzI1MDlhOTQ3OTU0ZDk0NDIwNCIsImlhdCI6MTY5NTExMzU2NywiZXhwIjoxNjk1MTk2MzY3fQ.C8veIQkRBREy3JZ3cp6nCpzLUL6oRwzWqKhLW3mIT2s
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
