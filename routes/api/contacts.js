@@ -1,9 +1,11 @@
 import express from 'express';
 import ctrl from '../../controllers/contacts.js';
 import * as schemas from '../../models/Contact.js';
-import { validatedContacts, isValidId } from '../../middlewares/index.js';
+import { validatedContacts, isValidId, authenticate } from '../../middlewares/index.js';
 
 const router = express.Router();
+
+router.use(authenticate);
 
 router.get('/', ctrl.getAllContacts);
 
