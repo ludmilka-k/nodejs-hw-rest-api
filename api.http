@@ -1,39 +1,49 @@
+### Get Contacts List
 ### router.get('/', ctrl.getAllContacts);
-GET http://localhost:3000/api/contacts
+GET http://localhost:3000/api/contacts?page1&limit=5&favorite=true
+Authorization:Bearer {{token}}
 
+### Get One Contact
 ### router.get('/:contactId', ctrl.getContactById);
-GET http://localhost:3000/api/contacts/64fdc427300cd41db445a416
+GET http://localhost:3000/api/contacts/650a13492d2fe9205b0ab1bf
+Authorization:Bearer {{token}}
 
-
+### Add Contact
 ### router.post('/', validatedContacts(schemaValidation), ctrl.createContact);
 POST http://localhost:3000/api/contacts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDg0ZWE2ZmQzM2U0NzU4ZjMyMTY1NiIsImlhdCI6MTY5NTA0OTM0NywiZXhwIjoxNjk1MTMyMTQ3fQ.l5D8ArqoC1cXkZP14XvjyMFaTTZ4Ls_cd3GSknR3UWA
+Authorization: Bearer {{token}}
 
 {
-  "name": "Jane Vorobey",
-  "email": "qweqwe@qw.com",
+  "name": "Gggg Hhhhh",
+  "email": "gggg@hhhh.com",
   "phone": "(999) 321-7654",
   "favorite": true
 }
 
+### Delete Contact
 ### router.delete('/:contactId', ctrl.removeContactById);
 DELETE http://localhost:3000/api/contacts/64fdc427300cd41db445a419
+Authorization: Bearer {{token}}
 
+### Update Contact
 ### router.put('/:contactId', ctrl.updateContactById);
-PUT http://localhost:3000/api/contacts/64ff643a1f8d1b4082e273e2
+PUT http://localhost:3000/api/contacts/650a13492d2fe9205b0ab1bf
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Janete Vorobey",
-  "email": "qweqwe@qw.com",
+  "email": "qweqwe-good-owner@qw.com",
   "phone": "(999) 321-7654",
   "favorite": true
 }
 
+### Update Field Favorite
 ### router.patch('/:contactId/favorite', ctrl.updateStatusContact);
 PATCH http://localhost:3000/api/contacts/64ff643a1f8d1b4082e273e2/favorite
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "favorite": true

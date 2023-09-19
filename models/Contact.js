@@ -10,7 +10,6 @@ const contactSchema = new Schema({
   },
   email: {
     type: String,
-    unique: true,
   },
   phone: {
     type: String,
@@ -23,9 +22,11 @@ const contactSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user',
     required: true,
+    index: true,
   },
 }, { versionKey: false, timestamps: true });
 
+contactSchema.index({ email: 1, owner: 1 }, { unique: true })
 contactSchema.post("save", handleMongooseError);
 contactSchema.pre("findOneAndUpdate", runValidateAtUpdate);
 contactSchema.post("findOneAndUpdate", handleMongooseError);
