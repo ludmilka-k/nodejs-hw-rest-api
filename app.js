@@ -3,8 +3,8 @@ import cors from 'cors';
 import logger from 'morgan';
 import "dotenv/config";
 
+import authRouter from "./routes/api/auth.js";
 import contactsRouter from './routes/api/contacts.js';
-
 // import dotenv from 'dotenv';
 // dotenv.config();
 
@@ -16,6 +16,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/auth', authRouter);
 app.use('/api/contacts', contactsRouter);
 
 app.use((req, res) => {

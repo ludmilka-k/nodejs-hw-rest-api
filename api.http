@@ -1,39 +1,96 @@
+### Get Contacts List
 ### router.get('/', ctrl.getAllContacts);
-GET http://localhost:3000/api/contacts
+GET http://localhost:3000/api/contacts?page1&limit=5&favorite=true
+Authorization:Bearer {{token}}
 
+### Get One Contact
 ### router.get('/:contactId', ctrl.getContactById);
-GET http://localhost:3000/api/contacts/64fdc427300cd41db445a416
+GET http://localhost:3000/api/contacts/650a13492d2fe9205b0ab1bf
+Authorization:Bearer {{token}}
 
-
+### Add Contact
 ### router.post('/', validatedContacts(schemaValidation), ctrl.createContact);
 POST http://localhost:3000/api/contacts
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-  "name": "Jane Vorobey",
-  "email": "qweqwe@qw.com",
+  "name": "Gggg Hhhhh",
+  "email": "gggg@hhhh.com",
   "phone": "(999) 321-7654",
   "favorite": true
 }
 
+### Delete Contact
 ### router.delete('/:contactId', ctrl.removeContactById);
 DELETE http://localhost:3000/api/contacts/64fdc427300cd41db445a419
+Authorization: Bearer {{token}}
 
+### Update Contact
 ### router.put('/:contactId', ctrl.updateContactById);
-PUT http://localhost:3000/api/contacts/64ff643a1f8d1b4082e273e2
+PUT http://localhost:3000/api/contacts/650a13492d2fe9205b0ab1bf
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Janete Vorobey",
-  "email": "qweqwe@qw.com",
+  "email": "qweqwe-good-owner@qw.com",
   "phone": "(999) 321-7654",
   "favorite": true
 }
 
+### Update Field Favorite
 ### router.patch('/:contactId/favorite', ctrl.updateStatusContact);
 PATCH http://localhost:3000/api/contacts/64ff643a1f8d1b4082e273e2/favorite
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "favorite": true
+}
+
+### Register User
+### authRouter.post('/:register', authCtrl.register);
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "mango@qw.com",
+  "password": "111111"
+}
+
+### Login User
+### authRouter.post('/:login', authCtrl.login);
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "mango@qw.com",
+  "password": "111111"
+}
+
+> {%
+    client.global.set("token", response.body.token);
+    client.log("received token: " + client.global.get("token"))
+ %}
+
+
+### Current User
+### authRouter.get('/:curent', authCtrl.getCurrent);
+GET http://localhost:3000/api/auth/current
+Authorization:Bearer {{token}}
+
+### Logout User
+### authRouter.post('/:logout', authCtrl.logout);
+POST http://localhost:3000/api/auth/logout
+Authorization: Bearer {{token}}
+
+### Change Subscription
+### authRouter.patch('/:current/subscription', authCtrl.patchSubscription);
+PATCH http://localhost:3000/api/auth/current/subscription
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "subscription": "pro"
 }
