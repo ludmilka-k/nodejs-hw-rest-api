@@ -22,6 +22,11 @@ app.use(express.static('public'));
 app.use('/api/auth', authRouter);
 app.use('/api/contacts', contactsRouter);
 
+const jsonErrorHandler = (err, req, res) => {
+  res.status(err.status).json({ error: err.status, message: err.message });
+}
+app.use(jsonErrorHandler);
+
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
 });
