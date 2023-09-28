@@ -55,8 +55,8 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "mango@qw.com",
-  "password": "111111"
+  "email": "kiwi@qw.com",
+  "password": "444444"
 }
 
 ### Login User
@@ -65,8 +65,8 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "mango@qw.com",
-  "password": "111111"
+  "email": "kiwi@qw.com",
+  "password": "444444"
 }
 
 > {%
@@ -94,3 +94,18 @@ Content-Type: application/json
 {
   "subscription": "pro"
 }
+
+### Set Avatar
+### authRouter.patch('/:avatars', authCtrl.updateAvatar);
+PATCH http://localhost:3000/api/auth/avatars HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="avatar"; filename="phonebook.jpg"
+
+< ./public/avatars/phonebook.jpg
+--WebAppBoundary--
+
+
+
