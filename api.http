@@ -55,9 +55,10 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "kiwi@qw.com",
-  "password": "444444"
+  "email": "l.kurochkina@ukr.net",
+  "password": "123456"
 }
+
 
 ### Login User
 ### authRouter.post('/:login', authCtrl.login);
@@ -65,8 +66,8 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "kiwi@qw.com",
-  "password": "444444"
+  "email": "l.kurochkina@ukr.net",
+  "password": "123456"
 }
 
 > {%
@@ -107,5 +108,21 @@ Content-Disposition: form-data; name="avatar"; filename="phonebook.jpg"
 < ./public/avatars/phonebook.jpg
 --WebAppBoundary--
 
+### Send Verify Email
+### authRouter.post('./:verify/verificationCode', authCtrl.verify
+GET http://localhost:3000/api/auth/verify/verificationCode
+Content-Type: application/json
 
+{
+  "email": "l.kurochkina@ukr.net",
+  "verificationCode": "Jn6XzZvRpyqwkbTCGsaNd"
+}
 
+### Resend Verify Email
+### authRouter.post('./:verify', authCtrl.resendVerifyEmail
+POST http://localhost:3000/api/auth/verify
+Content-Type: application/json
+
+{
+  "email": "l.kurochkina@ukr.net"
+}

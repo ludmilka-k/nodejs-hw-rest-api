@@ -29,7 +29,13 @@ const userSchema = new Schema({
     avatarURL: {
         type: String,
     },
-
+    verify: {
+        type: Boolean,
+        default: false,
+    },
+    verificationCode: {
+        type: String,
+    },
 }, { versionKey: false, timestamps: true });
 
 userSchema.post("save", handleMongooseError);
@@ -49,6 +55,10 @@ export const userLoginSchema = Joi.object({
 export const userSubscriptionSchema = Joi.object({
     subscription: Joi.string().valid('starter', 'pro', 'business').required(),
 }).unknown(false);
+
+export  const userEmailSchema = Joi.object({
+    email: Joi.string().pattern(emailRegexp).required(),
+});
 
 const User = model('user', userSchema);
 
