@@ -1,0 +1,9 @@
+services:
+  contacts:
+    image: 'contact-book'
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+  contacts-db:
+    image: "mongo"

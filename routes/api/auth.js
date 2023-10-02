@@ -7,6 +7,10 @@ const authRouter = express.Router();
 
 authRouter.post('/register', validatedContacts(userSchemas.userRegisterSchema), authCtrl.register);
 
+authRouter.get('/verify/:verificationCode', authCtrl.verify);
+
+authRouter.post('/verify', validatedContacts(userSchemas.userEmailSchema), authCtrl.resendVerifyEmail);
+
 authRouter.post('/login', validatedContacts(userSchemas.userLoginSchema), authCtrl.login);
 
 authRouter.get('/current', authenticate, authCtrl.getCurrent);
